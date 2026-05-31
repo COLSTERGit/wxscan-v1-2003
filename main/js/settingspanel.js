@@ -66,7 +66,7 @@ function startSystem() {
   //HERE_key = systemSettings.apiKeys.HERE_key
   locationJS()
   setTimeout(() => {
-    versionCheck(systemSettings.appearanceSettings.version)
+    //versionCheck(systemSettings.appearanceSettings.version)
     if (systemSettings.appearanceSettings.adMessage[0] == "network") {
       $.getJSON("https://mistwx.com/crawlnetwork.json", function(data) {
         systemSettings.appearanceSettings.adMessage = data.crawls.scanv1
