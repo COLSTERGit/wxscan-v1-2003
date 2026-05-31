@@ -2038,8 +2038,8 @@ function getGardenData() {
       if (data.wateringNeedsIndex12hour.dayInd[0] == "N") {
         dpi = 1
       }
-      weatherData.gardeningIndex.wateringIndex = 4//data.wateringNeedsIndex12hour.wateringNeedsIndex[dpi]
-      weatherData.gardeningIndex.wateringIndexWord = "Moderate"//widxWords[data.wateringNeedsIndex12hour.wateringNeedsIndex[dpi]]
+      weatherData.gardeningIndex.wateringIndex = data.wateringNeedsIndex12hour.wateringNeedsIndex[dpi]
+      weatherData.gardeningIndex.wateringIndexWord = widxWords[data.wateringNeedsIndex12hour.wateringNeedsIndex[dpi]]
     }).fail(function() {
       weatherData.gardeningIndex.wateringIndex = "FAIL"
       weatherData.gardeningIndex.wateringIndexWord = ""
