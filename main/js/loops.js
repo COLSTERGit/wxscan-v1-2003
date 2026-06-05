@@ -70,7 +70,7 @@ var udlLineup = [
 ]
 var udlDisplays = {
   ccName() {
-    $(".udl").html("Currently at  <em>" + udlData.currentConditions.locationName + "</em>")
+    $(".udl").html("Currently at   <em>" + udlData.currentConditions.locationName + "</em>")
     setTimeout(() => {
       udlCallBack()
     }, udlLength);
