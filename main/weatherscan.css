@@ -18,17 +18,17 @@
 
 @font-face {
   font-family: 'Frutiger Black';
-  src: url(fonts/Frutiger_Black.woff) format("woff");
+  src: url(fonts/Frutiger_Bold.woff) format("woff");
   font-style: normal;
 }
 @font-face {
   font-family: 'Frutiger BQ';
-  src: url(fonts/Frutiger_Black_Cond.woff) format("woff");
+  src: url(fonts/Frutiger_Bold_Cond.woff) format("woff");
   font-style: normal;
 }
 @font-face {
   font-family: 'Frutiger Bold Italic';
-  src: url(fonts/Frutiger_Bold_Italic.woff) format("woff");
+  src: url(fonts/Frutiger_Italic.woff) format("woff");
   font-style: normal;
 }
 @font-face {
@@ -61,7 +61,8 @@ p {
   color: #ebebeb;
   font-style: normal;
   font-family: "Frutiger";
-  -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 html * {
   box-sizing: border-box;
@@ -282,15 +283,15 @@ img#mist-logo {
   will-change: transform;
 }
 #date-time {
-    position: absolute;
+	position: absolute;
     z-index: 3;
     font-family: 'Frutiger';
-    font-size: 43px;
-    bottom: 153px;
-    font-weight: bold;
-    right: 347px;
+    font-size: 39px;
+    bottom: 159px;
+    right: 349px;
     white-space: pre;
     text-align: right;
+    letter-spacing: 0px;
 }
 .provider {
     position: absolute;
@@ -457,7 +458,8 @@ img#mist-logo {
   height: 281.25px !important;
 }
 .shrinkY {
-  transform: scaleY(0.91);
+  transform: scaleY(1);
+  letter-spacing: 0.5px;
   text-shadow: #141414  2px 4px 1px;
   transform-origin: top;
 }
@@ -466,18 +468,20 @@ img#mist-logo {
     font-family: 'Frutiger Bold Cn';
     z-index: 3;
     font-size: 61px;
-    top: 159px;
-    left: 199px;
+    top: 152px;
+    left: 182px;
+	letter-spacing: 0.5px;
 }
 .headertext {
     position: absolute;
     font-family: Frutiger;
     font-weight: bold;
-    font-size: 45px;
+    font-size: 44px;
     z-index: 3;
     text-align: right;
     top: 166px;
-    right: 225px;
+    right: 227px;
+    letter-spacing: 0.5px;
 }
 .titlearrow {
   position: absolute;
@@ -486,35 +490,39 @@ img#mist-logo {
   z-index: 3;
   border-top: 23px solid transparent;
   border-bottom: 23px solid transparent;
-  border-left: 47px solid #ffd40e;
+  border-left: 43px solid #ffd40e;
   filter: drop-shadow(6px 6px rgba(20, 20, 20, 0.75));
   left: 132px;
   top: 168px;
 }
 .udl {
-    position: absolute;
+	position: absolute;
     font-family: 'Frutiger';
     font-size: 45.5px;
     color: #ffd40e;
     z-index: 3;
-    top: 96px;
-    left: 201px;
+    top: 88px;
+    left: 180px;
     white-space: pre;
+    letter-spacing: -2.0px;
 }
 .udl em {
   font-style: normal;
   font-weight: bold;
+  letter-spacing: -0.5px;
 }
 .upnext-ticker {
     position: absolute;
     font-family: 'Frutiger';
-    font-weight: bold;
     font-size: 47px;
     color: #ffd40e;
     z-index: 3;
-    left: 189px;
-    top: 937px;
+    left: 193px;
+    top: 930px;
     white-space: pre;
+}
+.upnext-bold {
+  font-weight: normal;
 }
 #crawl-main {
     position: absolute;
@@ -530,12 +538,14 @@ img#mist-logo {
     overflow: hidden;
 }
 #crawl-main .crawl {
-    position: absolute;
+	position: absolute;
     z-index: 3;
     left: 2px;
-    top: 2px;
+    top: -2px;
     width: 696px;
     overflow: hidden;
+    letter-spacing: 0.5px;
+    font-size: 46px;
 }
 #crawl-main .gradient {
     position: absolute;
@@ -723,7 +733,6 @@ its not 1 for 1 code using so i mean i guess its aight
 .city-intro .locationname {
     position: absolute;
     font-family: 'Frutiger';
-    font-weight: bold;
     font-size: 83px;
     z-index: 8;
     bottom: 343px;
@@ -740,10 +749,9 @@ its not 1 for 1 code using so i mean i guess its aight
 .city-intro .toptext-one {
     position: absolute;
     font-family: Frutiger;
-    font-weight: bold;
     font-size: 45.2px;
     width: 740px;
-    top: 89px;
+    top: 75px;
     left: 175px;
     line-height: 117%;
     z-index: 9;
@@ -752,7 +760,6 @@ its not 1 for 1 code using so i mean i guess its aight
 .city-intro .toptext-two {
     position: absolute;
     font-family: Frutiger;
-    font-weight: bold;
     font-size: 20.5px;
     width: 740px;
     top: 117px;
@@ -884,7 +891,6 @@ its not 1 for 1 code using so i mean i guess its aight
     position: absolute;
     z-index: 5;
     font-family: Frutiger;
-    font-weight: bold;
     font-size: 65.5px;
     left: 675px;
     line-height: 190%;
@@ -979,32 +985,36 @@ its not 1 for 1 code using so i mean i guess its aight
   width: 775px;
 }
 .current-conditions .labels {
-    position: absolute;
+	position: absolute;
     font-family: 'Frutiger Bold CN';
-    top: 2px;
-    left: 127px;
+    top: 12px;
+    left: 111px;
     color: #ffd40e;
-    line-height: 177%;
+    line-height: 94.5px;
     font-size: 59px;
     white-space: pre-wrap;
+    letter-spacing: 0.5px;
+    transform: scaleY(1.0);
 }
 .current-conditions .data {
-    position: absolute;
+	position: absolute;
     font-family: 'Frutiger Bold CN';
-    top: 2px;
-    right: 755px;
+    top: 11px;
+    right: 741px;
     color: #ebebeb;
-    line-height: 177%;
-    font-size: 59px;
+    line-height: 94.5px;
+    font-size: 57px;
     text-align: right;
     white-space: pre-wrap;
+    transform: scaleY(1.0);
+    letter-spacing: 0.5px;
 }
 .current-conditions .pressure {
     position: absolute;
     font-family: 'Frutiger Bold Cn';
     font-size: 58px;
-    top: 207px;
-    right: 754px;
+    top: 213px;
+    right: 740px;
     height: 100px;
     width: 30px;
     /* background: url(images/assets/down_arrow.png); */
@@ -1021,7 +1031,7 @@ its not 1 for 1 code using so i mean i guess its aight
 }
 .current-conditions .icon {
     position: absolute;
-    left: 921px;
+    left: 893px;
     top: -10px;
     width: 311px;
     height: 280px;
@@ -1036,20 +1046,21 @@ its not 1 for 1 code using so i mean i guess its aight
     font-size: 52px;
     font-weight: bold;
     line-height: 110%;
-    top: 310px;
+    top: 278px;
     text-align: center;
     width: 400px;
-    left: 867px;
+    left: 847px;
     white-space: pre;
 }
 .current-conditions .temperature {
     position: absolute;
     font-family: 'Frutiger BQ';
-    font-size: 110px;
-    left: 970px;
+    font-size: 115px;
+    left: 945px;
     top: 446px;
     width: 200px;
     text-align: center;
+    transform: scaleY(0.89);
 }
 .nearby-cities {
   position: absolute;
@@ -1406,20 +1417,21 @@ its not 1 for 1 code using so i mean i guess its aight
 .doppler-radar .cities .city .dot-outline {
   position: absolute;
   z-index: 0;
-  background: transparent url(images/assets/locatorDotOutline.png) no-repeat;
+  background: transparent url(images/assets/whiteDot.png) no-repeat;
   background-size: 100% 100%;
 }
 .doppler-radar .cities-trans .city .dot-trans {
   position: absolute;
   z-index: 2;
-  background: transparent url(images/assets/locatorDotOutline.70.png) no-repeat;
+  background: transparent url(images/assets/whiteDot.70.png) no-repeat;
   background-size: 100% 100%;
 }
 .doppler-radar .cities-trans .city .dot-outline {
   position: absolute;
   z-index: 0;
-  background: transparent url(images/assets/locatorDotOutline.png) no-repeat;
+  background: transparent url(images/assets/whiteDot.png) no-repeat;
   background-size: 100% 100%;
+  drop-shadow: #000 2px 2px;
 }
 .doppler-radar .cities .city .name {
     position: absolute;
@@ -1589,7 +1601,7 @@ its not 1 for 1 code using so i mean i guess its aight
 .doppler-radar .icons .icon.interstateSign {
     position: absolute;
     z-index: 0;
-    background: transparent url(images/assets/interstateSign.png) no-repeat;
+    background: transparent url(images/assets/highway_sign.png.png) no-repeat;
     background-size: 100% 100%;
     height: 62px;
     width: 71px;
@@ -1597,7 +1609,7 @@ its not 1 for 1 code using so i mean i guess its aight
 .doppler-radar .icons .icon-outline.interstateSign {
     position: absolute;
     z-index: 0;
-    background: transparent url(images/assets/interstateSignOutline.png) no-repeat;
+    background: transparent url(images/assets/highway_sign.png.png) no-repeat;
     background-size: 100% 100%;
     height: 62px;
     width: 71px;
@@ -1615,7 +1627,7 @@ its not 1 for 1 code using so i mean i guess its aight
 .doppler-radar .icons-trans .icon.interstateSign {
     position: absolute;
     z-index: 2;
-    background: transparent url(images/assets/interstateSign70.png) no-repeat;
+    background: transparent url(images/assets/highway_sign.png.png) no-repeat;
     background-size: 100% 100%;
     height: 62px;
     width: 71px;
@@ -1750,7 +1762,6 @@ its not 1 for 1 code using so i mean i guess its aight
 }
 .daypart-forecast .time {
     position: absolute;
-    display: table;
     font-family: Frutiger;
     font-weight: bold;
     font-size: 46px;
@@ -1769,7 +1780,6 @@ its not 1 for 1 code using so i mean i guess its aight
 .daypart-forecast .temperature {
     position: absolute;
     font-family: Frutiger;
-    font-weight: bold;
     font-size: 88px;
     width: 100%;
     height: 228px;/*160px is lowest, 228 is highest*/
@@ -1932,7 +1942,6 @@ its not 1 for 1 code using so i mean i guess its aight
 .extended-forecast .high {
     position: absolute;
     font-family: Frutiger;
-    font-weight: bold;
     font-size: 88px;
     width: 250px;
     height: 100px;
@@ -1943,7 +1952,6 @@ its not 1 for 1 code using so i mean i guess its aight
 .extended-forecast .low {
 position: absolute;
     font-family: Frutiger;
-    font-weight: bold;
     font-size: 88px;
     width: 252px;
     height: 128px;
@@ -2038,7 +2046,6 @@ position: absolute;
 .almanac .alow {
     position: absolute;
     font-family: Frutiger;
-    font-weight: bold;
     font-size: 79px;
     left: 405px;
     top: 226px;
@@ -2049,7 +2056,6 @@ position: absolute;
     position: absolute;
     font-family: Frutiger;
     color: #ffd40e;
-    font-weight: bold;
     font-size: 52px;
     top: 75px;
     left: 637px;
