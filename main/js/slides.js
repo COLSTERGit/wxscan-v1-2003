@@ -105,20 +105,20 @@ var slideTitles = {
 };
 var upNextTickTtls = {
   "intro":"",
-  "forecast":"Up Next...Your Local Forecast",
-  "extralocal":"Up Next...Your Local Forecast",
-  "minicoreone":"Up Next...Your Local Forecast",
-  "minicoretwo":"Up Next...Your Local Forecast",
-  "traffic":"Up Next...Traffic Report",
-  "travel":"Up Next...Travel Forecast",
-  "airport":"Up Next...Airport Conditions",
-  "international":"Up Next...Int'l Forecast",
-  "golf":"Up Next...Golf Forecast",
-  "health":"Up Next...Health",
-  "garden":"Up Next...Garden",
-  "ski":"Up Next...Ski & Snow",
-  "beach":"Up Next...Boat & Beach",
-  "spanish":"Up Next...Espanol",
+  "forecast":"Up Next...<span class='upnext-bold'>Your Local Forecast</span>",
+  "extralocal":"Up Next...<span class='upnext-bold'>Your Local Forecast</span>",
+  "minicoreone":"Up Next...<span class='upnext-bold'>Your Local Forecast</span>",
+  "minicoretwo":"Up Next...<span class='upnext-bold'>Your Local Forecast</span>",
+  "traffic":"Up Next...<span class='upnext-bold'>Traffic Report</span>",
+  "travel":"Up Next...<span class='upnext-bold'>Travel Forecast</span>",
+  "airport":"Up Next...<span class='upnext-bold'>Airport Conditions</span>",
+  "international":"Up Next...<span class='upnext-bold'>Int'l Forecast</span>",
+  "golf":"Up Next...<span class='upnext-bold'>Golf Forecast</span>",
+  "health":"Up Next...<span class='upnext-bold'>Health</span>",
+  "garden":"Up Next...<span class='upnext-bold'>Garden</span>",
+  "ski":"Up Next...<span class='upnext-bold'>Ski & Snow</span>",
+  "beach":"Up Next...<span class='upnext-bold'>Boat & Beach</span>",
+  "spanish":"Up Next...<span class='upnext-bold'>Espanol</span>"
 };
 var slideLength = 10000;
 var currentProgram;
@@ -304,7 +304,7 @@ var slidePrograms = {
         //if (slideSettings.order[orderidx].slideLineup[gidx].group == "extralocal" && locationid == systemSettings.extraCity.cities.length-1) {
         //  Nlocationid = 0
         //  console.log("upnext ticker changed (UPNEXT SLIDE)")
-        //  $(".normal-lowerarea .upnext-ticker").text(upNextTickTtls[slideSettings.order[orderidx].slideLineup[ngidx].group])
+        //  $(".normal-lowerarea .upnext-ticker").html(upNextTickTtls[slideSettings.order[orderidx].slideLineup[ngidx].group])
         //}
       //}
       if (slideSettings.order[orderidx].slideLineup[gidx].group == "forecast" || slideSettings.order[orderidx].slideLineup[gidx].group == "minicoreone" || slideSettings.order[orderidx].slideLineup[gidx].group == "minicoretwo") {
@@ -424,7 +424,7 @@ var slidePrograms = {
         for (var i = 0; i < dataTunnel.alertsAmount; i++) {
           atext = atext + dataTunnel.warnings[i].headline + " " + "\n\n"
         }
-        $(".bulletin .alerts").text(atext.slice(0, -2))
+        $(".bulletin .alerts").text(atext)
         $(".bulletin .group").fadeIn(500)
         
         setTimeout(() => {
@@ -471,11 +471,11 @@ var slidePrograms = {
         //console.log("Next Elocid", Nlocationid)
         if (locationid + 1 == systemSettings.extraCity.cities.length) {
           if (orderidx == 0) {
-            $(".normal-lowerarea .upnext-ticker").text(upNextTickTtls[slideSettings.order[orderidx].slideLineup[ngidx].group])
+            $(".normal-lowerarea .upnext-ticker").html(upNextTickTtls[slideSettings.order[orderidx].slideLineup[ngidx].group])
           }
         } else {
           //console.log("upnext ticker changed (CHANGEELOC)")
-          $(".normal-lowerarea .upnext-ticker").text("Up Next..." + systemSettings.extraCity.cities[Nlocationid].locationName)
+          $(".normal-lowerarea .upnext-ticker").html("Up Next..." + systemSettings.extraCity.cities[Nlocationid].locationName)
         }
         $("#slides-background").css({"background":`transparent url(images/backgrounds/` + systemSettings.extraCity.cities[locationid].slidesBG + `.png) no-repeat`, "background-size": "100% 100%"});
       }
@@ -563,9 +563,8 @@ var slidePrograms = {
         getIcon($(".current-conditions .icon"), dataTunnel.icon, "current", "large")
         $(".current-conditions .condition").text(dataTunnel.condition)
         $(".current-conditions .temperature").text(dataTunnel.temperature)
-        if (locationChoice != "spanish") {
-          audioPlayer.playCC()
-        }
+
+        audioPlayer.playCC()
         fadeSlideIn($(".current-conditions"), 500)
         setTimeout(() => {
           fadeSlideOut($(".current-conditions"), 500, true)
@@ -637,7 +636,7 @@ var slidePrograms = {
     dopplerRadar() {
       $("#slides-background").fadeOut(0)
       radarSlide = true
-      var dataTunnel = locationChoice == "main" || locationChoice == "spanish" ? systemSettings.mainCity.radar : systemSettings.extraCity.cities[locationid].radar
+      var dataTunnel = locationChoice == "main" ? systemSettings.mainCity.radar : systemSettings.extraCity.cities[locationid].radar
       if (locationChoice == "spanish") {
         $('.titletext').text("Radar Doppler Local")
         $(".doppler-radar .timestamp").text("Últimas 3 horas")
@@ -708,9 +707,7 @@ var slidePrograms = {
         }
         
       }, 50);
-      if (locationChoice != "spanish") {
-        audioPlayer.playDopplerRadar()
-      }
+      audioPlayer.playDopplerRadar()
       fadeSlideIn($(".doppler-radar"), 0, 0)
       createRadarCities(locationChoice)
       createRadarIcons(locationChoice)
@@ -764,7 +761,7 @@ var slidePrograms = {
     radarSatellite() {
       $("#slides-background").fadeOut(0)
       weatherData.satUnavailable = false
-      var dataTunnel = locationChoice == "main" || locationChoice == "spanish" ? systemSettings.mainCity.radar : systemSettings.extraCity.cities[locationid].radar
+      var dataTunnel = locationChoice == "main" ? systemSettings.mainCity.radar : systemSettings.extraCity.cities[locationid].radar
       if (locationChoice == "spanish") {
         $('.titletext').text("Radar/Satéllite")
         $(".doppler-radar .timestamp").text("Últimas 5 horas")
@@ -831,14 +828,14 @@ var slidePrograms = {
       }
     },
     localForecast() {
-        $('.titletext').text("Local Forecast")
+        $('.titletext').text("36 Hour Forecast")
         $('.headertext').text(weatherData.localForecast.locationName)
         if (weatherData.localForecast.noReport == false) {
           if (round == 0) {
             audioPlayer.playLF()
             fadeSlideIn($(".local-forecast"), 500)
           } else {
-            $(".local-forecast .group").fadeIn(250)
+            $(".local-forecast .group").show()
           }
           $(".local-forecast .timetitle").text(weatherData.localForecast.times[round].timetitle)
           $(".local-forecast .forecast").text(weatherData.localForecast.times[round].forecast)
@@ -853,11 +850,14 @@ var slidePrograms = {
           }, 5);
           setTimeout(() => {
             if (round < 3) {
-              $(".local-forecast .group").fadeOut(250)
-              setTimeout(() => {
-                round++
-                currentProgram()
-              }, 250);
+				setTimeout(() => {
+				  if (round < 3) {
+					round++
+					currentProgram()
+				  } else {
+					fadeSlideOut($(".local-forecast"), 500, true)
+				  }
+				}, slideLength);
             } else {
               fadeSlideOut($(".local-forecast"), 500, true)
             }
@@ -885,9 +885,7 @@ var slidePrograms = {
       $('.titletext').text(dataTunnel.header)
       $('.headertext').text(dataTunnel.locationName)
       var divs = [".one", ".two", ".three", ".four"]
-      if (locationChoice != "spanish") {
-        audioPlayer.playDP()
-      }
+      audioPlayer.playDP()
       if (dataTunnel.noReport == false) {
         fadeSlideIn($(".daypart-forecast"), 500)
         for (var i = 0; i < 4; i++) {
@@ -1119,26 +1117,22 @@ var slidePrograms = {
       $('.titletext').text("Traffic Flow")
       $('.headertext').text(weatherData.trafficFlow.locationName)
       var divs = [".one", ".two", ".three"]
-	  var bump = round*3
       var blockColors = {"GREEN":"#59cb61", "YELLOW":"#dfcd26", "RED":"#bf2026"}
-	  var pages = Math.ceil(weatherData.trafficFlow.routes.length/3)
       if (weatherData.trafficFlow.noReport == false && weatherData.trafficFlow.routes.length > 0) {
         fadeSlideIn($(".traffic-flow"), 500)
-		if (round == 0) {
-			audioPlayer.playTrafficFlow()
-		}
+        audioPlayer.playTrafficFlow()
         $(".traffic-flow .panel.one .fullgroup").fadeOut(0)
         $(".traffic-flow .panel.two .fullgroup").fadeOut(0)
         $(".traffic-flow .panel.three .fullgroup").fadeOut(0)
         for (var i = 0; i < 3; i++) {
-          if (weatherData.trafficFlow.routes[i+bump]) {
+          if (weatherData.trafficFlow.routes[i]) {
             $(".traffic-flow .panel" + divs[i] + " .fullgroup").fadeIn(0)
-            $(".traffic-flow .panel" + divs[i] + " .description").text(weatherData.trafficFlow.routes[i+bump].from + " to " + weatherData.trafficFlow.routes[i+bump].to)
-            $(".traffic-flow .panel" + divs[i] + " .trafficflow").text(weatherData.trafficFlow.routes[i+bump].speed)
-            $(".traffic-flow .panel" + divs[i] + " .triptime").text(weatherData.trafficFlow.routes[i+bump].travelTime)
-            $(".traffic-flow .panel" + divs[i] + " .trafficflowcover").css({"background-color":blockColors[weatherData.trafficFlow.routes[i+bump].color]})
-            $(".traffic-flow .panel" + divs[i] + " .routeicon").css({"background-image": "url(" + weatherData.trafficFlow.routes[i+bump].routeIcon + ")", "background-repeat":"no-repeat", "background-size":"100%"})
-            if (weatherData.trafficFlow.routes[i+bump].speed != "CLEAR") {
+            $(".traffic-flow .panel" + divs[i] + " .description").text(weatherData.trafficFlow.routes[i].from + " to " + weatherData.trafficFlow.routes[i].to)
+            $(".traffic-flow .panel" + divs[i] + " .trafficflow").text(weatherData.trafficFlow.routes[i].speed)
+            $(".traffic-flow .panel" + divs[i] + " .triptime").text(weatherData.trafficFlow.routes[i].travelTime)
+            $(".traffic-flow .panel" + divs[i] + " .trafficflowcover").css({"background-color":blockColors[weatherData.trafficFlow.routes[i].color]})
+            $(".traffic-flow .panel" + divs[i] + " .routeicon").css({"background-image": "url(" + weatherData.trafficFlow.routes[i].routeIcon + ")", "background-repeat":"no-repeat", "background-size":"100%"})
+            if (weatherData.trafficFlow.routes[i].speed != "CLEAR") {
               $(".traffic-flow .panel" + divs[i] + " .mingroup").fadeIn(0)
               $(".traffic-flow .panel" + divs[i] + " .trafficflow").css({"padding-top":"0px","font-size":"92px"})
             } else {
@@ -1149,15 +1143,7 @@ var slidePrograms = {
         }
 
         setTimeout(() => {
-          if (round < (pages-1)) {
-            fadeSlideOut($(".traffic-flow"), 250, false)
-            setTimeout(() => {
-              round++
-              currentProgram()
-            }, 250);
-          } else {
-            fadeSlideOut($(".traffic-flow"), 500, true)
-          }
+          fadeSlideOut($(".traffic-flow"), 500, true)
         }, slideLength);
       } else {
         fadeSlideOut($(".traffic-flow"), 0, true, 0)
@@ -2600,16 +2586,16 @@ function showSlides() {
     //console.log("Next locid", Nlocationid)
     if (orderidx == 0) {
       if (slideSettings.order[orderidx].slideLineup[gidx].group != "extralocal") {
-      //  $(".normal-lowerarea .upnext-ticker").text(upNextTickTtls[slideSettings.order[orderidx].slideLineup[ngidx].group].cities[Nlocationid].name)
+      //  $(".normal-lowerarea .upnext-ticker").html(upNextTickTtls[slideSettings.order[orderidx].slideLineup[ngidx].group].cities[Nlocationid].name)
       //} else {
-        $(".normal-lowerarea .upnext-ticker").text(upNextTickTtls[slideSettings.order[orderidx].slideLineup[ngidx].group])
+        $(".normal-lowerarea .upnext-ticker").html(upNextTickTtls[slideSettings.order[orderidx].slideLineup[ngidx].group])
       } else {
         if (systemSettings.extraCity.cities.length > 1) {
           //USE
           //console.log("upnext ticker changed (SHOW SLIDES)")
-          $(".normal-lowerarea .upnext-ticker").text("Up Next..." + systemSettings.extraCity.cities[Nlocationid].locationName)
+          $(".normal-lowerarea .upnext-ticker").html("Up Next..." + systemSettings.extraCity.cities[Nlocationid].locationName)
         } else {
-          $(".normal-lowerarea .upnext-ticker").text(upNextTickTtls[slideSettings.order[orderidx].slideLineup[ngidx].group])
+          $(".normal-lowerarea .upnext-ticker").html(upNextTickTtls[slideSettings.order[orderidx].slideLineup[ngidx].group])
         }
       }
     }
